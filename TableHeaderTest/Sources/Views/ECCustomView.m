@@ -22,8 +22,10 @@
     if ( self )
     {
 
+        self.backgroundColor = [UIColor lightGrayColor];
+
         self.label = [[UILabel alloc] init];
-        self.label.text = @"My Table Header View Controller";
+        self.label.text = @"My Table Header View";
         self.label.textAlignment  = NSTextAlignmentCenter;
         [self addSubview:self.label];
 
@@ -53,7 +55,7 @@
     self.minusButton.translatesAutoresizingMaskIntoConstraints = NO;
     self.plusButton.translatesAutoresizingMaskIntoConstraints = NO;
 
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_minusButton][_label][_plusButton]-|" options:0 metrics:0 views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_minusButton]-[_label]-[_plusButton]-|" options:0 metrics:0 views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_label]" options:0 metrics:0 views:views]];
 
 

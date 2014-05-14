@@ -60,19 +60,14 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
     self.headerViewController = [[ECHeaderViewController alloc] init];
 
     [self addChildViewController:self.headerViewController];
-
-    self.headerViewController.view.frame = CGRectZero;
     self.headerViewController.view.clipsToBounds = YES;
-    [self.view addSubview: self.self.headerViewController.view];
+
     [self.headerViewController didMoveToParentViewController:self];
 
     //
     // Calendar view is the table header view
     //
-    self.headerViewController.view.frame = CGRectZero;
     self.tableView.tableHeaderView = self.headerViewController.view;
-    self.tableView.tableHeaderView.frame = CGRectZero;
-
 
     //
     // Auto Layout
@@ -146,32 +141,6 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
     headerFrame.size.height = height;
     return headerFrame;
 }
-
-//- (void)toggleCalendarView:(id)toggleCalendarView
-//{
-//
-//    CGRect closedFrame = CGRectMake(0, 0, self.view.frame.size.width, 0);
-//    CGRect openFrame = CGRectMake(0, 0, self.view.frame.size.width, 100);
-//    CGRect newFrame = self.calendarViewVisible ? openFrame : closedFrame;
-//
-//
-//    // The UIView animation block handles the animation of our header view
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:0.3];
-//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//
-//    // beginUpdates and endUpdates trigger the animation of our cells
-////    [self.tableView beginUpdates];
-//
-//
-//    self.headerViewController.view.frame = newFrame;
-//    [self.tableView setTableHeaderView:self.headerViewController.view];
-//
-////    [self.tableView endUpdates];
-//    [UIView commitAnimations];
-//
-//    self.calendarViewVisible = !self.calendarViewVisible;
-//}
 
 
 @end
