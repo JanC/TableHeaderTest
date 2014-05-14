@@ -3,16 +3,16 @@
 // Copyright (c) 2014 Tequila Apps. All rights reserved.
 //
 
-#import "ECCustomView.h"
+#import "ECHeaderView.h"
 
-@interface ECCustomView ()
+@interface ECHeaderView ()
 
 @property(nonatomic, strong) UILabel *label;
 @property(nonatomic, strong) UIButton *plusButton;
 @property(nonatomic, strong) UIButton *minusButton;
 @end
 
-@implementation ECCustomView
+@implementation ECHeaderView
 {
 }
 

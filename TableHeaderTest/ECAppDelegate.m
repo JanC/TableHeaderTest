@@ -8,7 +8,7 @@
 
 #import "ECAppDelegate.h"
 #import "ECTableViewController.h"
-#import "ECViewController.h"
+
 
 @implementation ECAppDelegate
 
@@ -17,15 +17,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 
-
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-
-    tabBarController.viewControllers = @[
-            [[UINavigationController alloc] initWithRootViewController:[[ECTableViewController alloc] init]],
-            [[UINavigationController alloc] initWithRootViewController:[[ECViewController alloc] init]]
-    ];
-
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ECTableViewController alloc] init]];
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

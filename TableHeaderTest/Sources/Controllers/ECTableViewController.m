@@ -5,6 +5,7 @@
 
 #import "ECTableViewController.h"
 #import "ECHeaderViewController.h"
+#import "ECHeaderView.h"
 
 NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
 
@@ -13,7 +14,8 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
 @property (nonatomic, strong, readwrite) UITableView *tableView;
 @property (nonatomic, assign, readwrite) BOOL calendarViewVisible;
 
-@property(nonatomic, strong) ECHeaderViewController *headerViewController;
+
+@property(nonatomic, strong) UIView *headerView;
 @end
 
 @implementation ECTableViewController
@@ -57,17 +59,19 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
     //
 
 
-    self.headerViewController = [[ECHeaderViewController alloc] init];
+    ECHeaderViewController *headerViewController = [[ECHeaderViewController alloc] init];
+    [self addChildViewController:headerViewController];
+    headerViewController.view.clipsToBounds = YES;
+    [headerViewController didMoveToParentViewController:self];
 
-    [self addChildViewController:self.headerViewController];
-    self.headerViewController.view.clipsToBounds = YES;
-
-    [self.headerViewController didMoveToParentViewController:self];
 
     //
     // Calendar view is the table header view
     //
-    self.tableView.tableHeaderView = self.headerViewController.view;
+
+    //self.headerView = [[ECHeaderView alloc] init];
+    self.headerView = headerViewController.view;
+    self.tableView.tableHeaderView = self.headerView;
 
     //
     // Auto Layout
@@ -126,8 +130,8 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
     //
     [UIView animateKeyframesWithDuration:0.5 delay:0.0 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
                               animations:^{
-                                  self.headerViewController.view.frame = [self frameForHeaderView:self.calendarViewVisible];
-                                  self.tableView.tableHeaderView = self.headerViewController.view;
+                                  self.headerView.frame = [self frameForHeaderView:self.calendarViewVisible];
+                                  self.tableView.tableHeaderView = self.headerView;
                               }
                               completion:^(BOOL finished) {
                               }];
@@ -137,7 +141,7 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
 -(CGRect) frameForHeaderView:(BOOL) visible
 {
     CGFloat height = visible ? 100.0 : 0.0;
-    CGRect headerFrame = self.headerViewController.view.frame;
+    CGRect headerFrame = self.headerView.frame;
     headerFrame.size.height = height;
     return headerFrame;
 }

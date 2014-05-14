@@ -4,7 +4,7 @@
 //
 
 #import "ECHeaderViewController.h"
-#import "ECCustomView.h"
+#import "ECHeaderView.h"
 
 @implementation ECHeaderViewController
 {
@@ -17,18 +17,18 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
 
 
-    UIView *customView = [[ECCustomView alloc] init];
+    UIView *headerView = [[ECHeaderView alloc] init];
+    [self.view addSubview:headerView];
 
-    [self.view addSubview:customView];
 
     //
     // Auto Layout
     //
-    customView.translatesAutoresizingMaskIntoConstraints = NO;
+    headerView.translatesAutoresizingMaskIntoConstraints = NO;
 
-    NSDictionary *views = NSDictionaryOfVariableBindings(customView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[customView]|" options:0 metrics:nil  views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[customView]" options:0 metrics:nil  views:views]];
+    NSDictionary *views = NSDictionaryOfVariableBindings(headerView);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[headerView]|" options:0 metrics:nil  views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerView]" options:0 metrics:nil  views:views]];
 }
 
 @end

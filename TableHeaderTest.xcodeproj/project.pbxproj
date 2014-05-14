@@ -19,8 +19,7 @@
 		C3AE276A19238224002F7DC6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AE275219238224002F7DC6 /* UIKit.framework */; };
 		C3AE277219238224002F7DC6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3AE277019238224002F7DC6 /* InfoPlist.strings */; };
 		C3AE277419238224002F7DC6 /* TableHeaderTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3AE277319238224002F7DC6 /* TableHeaderTestTests.m */; };
-		D91FC02A20C3638D7A709574 /* ECCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1314A70915607028D1B /* ECCustomView.m */; };
-		D91FC1F5C475424D1D892FC2 /* ECViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC4361B5DFD5BFACAFDAE /* ECViewController.m */; };
+		D91FC02A20C3638D7A709574 /* ECHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC1314A70915607028D1B /* ECHeaderView.m */; };
 		D91FC516EA2567233D0B0AC5 /* ECHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FC8B46976949ABEF33F2C /* ECHeaderViewController.m */; };
 		D91FC8C8C2D2D5CF17D12742 /* ECTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D91FCEC7769944FF747055E1 /* ECTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -53,12 +52,10 @@
 		C3AE277119238224002F7DC6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C3AE277319238224002F7DC6 /* TableHeaderTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableHeaderTestTests.m; sourceTree = "<group>"; };
 		D91FC00B6D86A0CE64EE62AF /* ECHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECHeaderViewController.h; sourceTree = "<group>"; };
-		D91FC1314A70915607028D1B /* ECCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECCustomView.m; sourceTree = "<group>"; };
-		D91FC4361B5DFD5BFACAFDAE /* ECViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECViewController.m; sourceTree = "<group>"; };
-		D91FC8095C0E459B3F65FB49 /* ECCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECCustomView.h; sourceTree = "<group>"; };
+		D91FC1314A70915607028D1B /* ECHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECHeaderView.m; sourceTree = "<group>"; };
+		D91FC8095C0E459B3F65FB49 /* ECHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECHeaderView.h; sourceTree = "<group>"; };
 		D91FC8180B7E90814BBA5680 /* ECTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTableViewController.h; sourceTree = "<group>"; };
 		D91FC8B46976949ABEF33F2C /* ECHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECHeaderViewController.m; sourceTree = "<group>"; };
-		D91FCAE51E04E5CAC49D09FA /* ECViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECViewController.h; sourceTree = "<group>"; };
 		D91FCEC7769944FF747055E1 /* ECTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,8 +166,8 @@
 		D91FC84F3B683C15E32D2A01 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D91FC1314A70915607028D1B /* ECCustomView.m */,
-				D91FC8095C0E459B3F65FB49 /* ECCustomView.h */,
+				D91FC1314A70915607028D1B /* ECHeaderView.m */,
+				D91FC8095C0E459B3F65FB49 /* ECHeaderView.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,8 +179,6 @@
 				D91FC8180B7E90814BBA5680 /* ECTableViewController.h */,
 				D91FC8B46976949ABEF33F2C /* ECHeaderViewController.m */,
 				D91FC00B6D86A0CE64EE62AF /* ECHeaderViewController.h */,
-				D91FC4361B5DFD5BFACAFDAE /* ECViewController.m */,
-				D91FCAE51E04E5CAC49D09FA /* ECViewController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -288,8 +283,7 @@
 				C3AE275B19238224002F7DC6 /* main.m in Sources */,
 				D91FC8C8C2D2D5CF17D12742 /* ECTableViewController.m in Sources */,
 				D91FC516EA2567233D0B0AC5 /* ECHeaderViewController.m in Sources */,
-				D91FC02A20C3638D7A709574 /* ECCustomView.m in Sources */,
-				D91FC1F5C475424D1D892FC2 /* ECViewController.m in Sources */,
+				D91FC02A20C3638D7A709574 /* ECHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

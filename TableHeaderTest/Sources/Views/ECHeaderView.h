@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ECCustomView : UIView
+@interface ECHeaderView : UIView
 
 
 @end
