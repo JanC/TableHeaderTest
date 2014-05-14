@@ -5,7 +5,13 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol ECHeaderViewDelegate
+-(void) didIncrement;
+-(void) didDecrement;
+@end
+
 @interface ECHeaderView : UIView
 
+@property (nonatomic, weak, readwrite) id<ECHeaderViewDelegate> delegate;
 
 @end

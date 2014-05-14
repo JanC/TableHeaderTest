@@ -32,16 +32,20 @@
         self.plusButton = [[UIButton alloc] init];
         [self.plusButton setTitle:@"+" forState:UIControlStateNormal];
         [self addSubview:self.plusButton];
+        [self.plusButton addTarget:self action:@selector(addAction:) forControlEvents:UIControlEventTouchUpInside];
 
         self.minusButton = [[UIButton alloc] init];
         [self.minusButton setTitle:@"-" forState:UIControlStateNormal];
         [self addSubview:self.minusButton];
+        [self.minusButton addTarget:self action:@selector(removeAction:) forControlEvents:UIControlEventTouchUpInside];
 
 
     }
 
     return self;
 }
+
+
 
 - (void)updateConstraints
 {
@@ -74,6 +78,18 @@
                                                      attribute:NSLayoutAttributeCenterY
                                                     multiplier:1.0
                                                       constant:0.0]];
+}
+
+#pragma mark - Actions
+
+- (void)removeAction:(id)sender
+{
+    [self.delegate didDecrement];
+}
+
+- (void)addAction:(id)sender
+{
+    [self.delegate didIncrement];
 }
 
 @end
