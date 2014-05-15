@@ -41,7 +41,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerView]" options:0 metrics:nil  views:views]];
 
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_countLabel]|" options:0 metrics:nil  views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerView][_countLabel]|" options:0 metrics:nil  views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[headerView]-(10)-[_countLabel]-(>=10)-|" options:0 metrics:nil  views:views]];
 }
 
 - (void)didIncrement

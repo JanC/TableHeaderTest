@@ -16,6 +16,7 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
 
 
 @property(nonatomic, strong) UIView *headerView;
+@property(nonatomic, strong) NSLayoutConstraint *headerHeightConstraint;
 @end
 
 @implementation ECTableViewController
@@ -60,7 +61,10 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
 
 
     ECHeaderViewController *headerViewController = [[ECHeaderViewController alloc] init];
+    self.headerView = headerViewController.view;
+
     [self addChildViewController:headerViewController];
+    [self.view addSubview:self.headerView];
     headerViewController.view.clipsToBounds = YES;
     [headerViewController didMoveToParentViewController:self];
 
@@ -71,25 +75,34 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
 
     //self.headerView = [[ECHeaderView alloc] init];
     self.headerView = headerViewController.view;
-    self.tableView.tableHeaderView = self.headerView;
+    //self.tableView.tableHeaderView = self.headerView;
 
     //
     // Auto Layout
     //
+    self.headerView.translatesAutoresizingMaskIntoConstraints = NO;
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.tableView];
 
-    NSDictionary *views = NSDictionaryOfVariableBindings(_tableView);
+    id topLayoutGuide = self.topLayoutGuide;
+
+    NSDictionary *views = NSDictionaryOfVariableBindings(_tableView, _headerView, topLayoutGuide);
     NSDictionary *metrics = @{};
 
+
+
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_tableView]|" options:0 metrics:metrics views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_tableView]|" options:0 metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_headerView]|" options:0 metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topLayoutGuide][_headerView][_tableView]|" options:0 metrics:metrics views:views]];
+
+
+    self.headerHeightConstraint = [NSLayoutConstraint constraintWithItem:self.headerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
+    [self.view addConstraint:self.headerHeightConstraint];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tableView.tableHeaderView.frame = [self frameForHeaderView:YES];
 }
 
 
@@ -125,16 +138,23 @@ NSString *const ECTableViewControllerCellId = @"ECTableViewControllerCellId";
 {
 
     self.calendarViewVisible = !self.calendarViewVisible;
-    //
-    // Before animation
-    //
-    [UIView animateKeyframesWithDuration:0.5 delay:0.0 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
-                              animations:^{
-                                  self.headerView.frame = [self frameForHeaderView:self.calendarViewVisible];
-                                  self.tableView.tableHeaderView = self.headerView;
-                              }
-                              completion:^(BOOL finished) {
-                              }];
+
+    self.headerHeightConstraint.constant = self.calendarViewVisible ? 100 : 0;
+
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+
+//    //
+//    // Before animation
+//    //
+//    [UIView animateKeyframesWithDuration:0.5 delay:0.0 options:UIViewKeyframeAnimationOptionBeginFromCurrentState
+//                              animations:^{
+//                                  self.headerView.frame = [self frameForHeaderView:self.calendarViewVisible];
+//                                  self.tableView.tableHeaderView = self.headerView;
+//                              }
+//                              completion:^(BOOL finished) {
+//                              }];
 
 }
 
